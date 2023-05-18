@@ -1,5 +1,4 @@
-import React from 'react';
-import { BeakerIcon } from '@heroicons/react/24/solid'
+
 
 const Footer = () => {
     return (
