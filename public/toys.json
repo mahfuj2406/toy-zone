@@ -1,0 +1,68 @@
+[
+    {
+      "subCategory": "Porsche Boxster",
+      "toyName": "Sports Car",
+      "imageURL": "https://i.ibb.co/5GzzhqW/sports-Car-2.jpg",
+      "price": 19.99,
+      "rating": 4.5,
+      "sellerName": "Toy Emporium",
+      "sellerEmail": "toys@toyemporium.com",
+      "availableQuantity": 10,
+      "description": "Experience the thrill of speed with this sleek sports car toy. It features a vibrant red color, realistic design, and smooth wheels for endless racing fun."
+    },
+    {
+      "subCategory": "Regular Car",
+      "toyName": "Nissan Versa",
+      "imageURL": "https://i.ibb.co/VWhLcWv/regular-Car-2.jpg",
+      "price": 24.99,
+      "rating": 4.2,
+      "sellerName": "Toy Landmark",
+      "sellerEmail": "sales@toylandmark.com",
+      "availableQuantity": 8,
+      "description": "This sturdy truck toy is perfect for hauling and transporting. It comes with realistic details, movable parts, and a detachable trailer for added play value."
+    },
+    {
+      "subCategory": "Regular Car",
+      "toyName": "Toyota Avalon",
+      "imageURL": "https://i.ibb.co/Bqq1k26/regular-Car-1.jpg",
+      "price": 14.99,
+      "rating": 4.5,
+      "sellerName": "FunTropolis",
+      "sellerEmail": "info@funtropolis.com",
+      "availableQuantity": 12,
+      "description": "Unleash your imagination with this versatile regular car toy. It features a classic design, smooth rolling wheels, and a compact size that's perfect for little hands."
+    },
+    {
+      "subCategory": "Yellow lorry",
+      "toyName": "Truck",
+      "imageURL": "https://i.ibb.co/2q5QRh5/truck-2.jpg",
+      "price": 17.99,
+      "rating": 4.3,
+      "sellerName": "ToyWhiz",
+      "sellerEmail": "sales@toywhiz.com",
+      "availableQuantity": 6,
+      "description": "Be a hero and save the day with this mini fire truck toy. It comes with a ladder, siren sounds, and flashing lights, providing endless firefighting adventures."
+    },
+    {
+      "subCategory": "Truck",
+      "toyName": "Yellow tipper dump ",
+      "imageURL": "https://i.ibb.co/Btzhqqs/truck-1.jpg",
+      "price": 16.99,
+      "rating": 4.1,
+      "sellerName": "PlaySquad",
+      "sellerEmail": "support@playsquad.com",
+      "availableQuantity": 7,
+      "description": "Be a hero and save the day with this mini fire truck toy. It features a blue and white design, realistic details, and friction-powered wheels for fast-paced action."
+    },
+    {
+        "subCategory": "Sports Car",
+        "toyName": "Audi R8",
+        "imageURL": "https://i.ibb.co/3SYYnyK/sports-Car-1.jpg",
+        "price": 29.99,
+        "rating": 4.8,
+        "sellerName": "Speedy Toys",
+        "sellerEmail": "sales@speedytoys.com",
+        "availableQuantity": 3,
+        "description": "Feel the need for speed with this race car toy. It features aerodynamic design, racing decals, and pull-back action for high-speed races. Challenge your friends and be the ultimate champion!"
+        }
+    ]

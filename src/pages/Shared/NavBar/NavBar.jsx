@@ -5,8 +5,8 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 const NavBar = () => {
     return (
-        <div className='bg-purple-800'>
-            <div className="navbar bg-purple-800 mx-auto container">
+        <div className='bg-teal-800'>
+            <div className="navbar bg-teal-800 mx-auto container">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -34,11 +34,12 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <div className="dropdown dropdown-end">
+                    <ul className="menu menu-horizontal px-1">
+                        <li><a>Login</a></li>
+                    </ul>
                         <label tabIndex={0} className="btn btn-circle avatar bg-slate-700 hover:bg-slate-500 hover:border-purple-900 text-2xl">
                             <FontAwesomeIcon icon={faUser} />
                         </label>
-                    </div>
                 </div>
             </div>
         </div>
