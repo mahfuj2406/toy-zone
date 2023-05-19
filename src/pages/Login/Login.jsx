@@ -22,16 +22,13 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="text" placeholder="email" className="input input-bordered" />
+                            <input type="text" name='email' placeholder="email" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="text" placeholder="password" className="input input-bordered" />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
+                            <input type="text" name='password' placeholder="password" className="input input-bordered" />
                         </div>
                         <div className="form-control mt-6 ">
                             <button className="btn bg-teal-800 border-0 hover:border hover:bg-teal-900">Login</button>
@@ -41,7 +38,7 @@ const Login = () => {
                         
                             <button className="btn bg-slate-300 text-slate-900 hover:bg-white"> <img src="/public/google_icon.png" className='h-full p-2' /> Login with Google</button>
                         </div>
-                        <p className='font-bold mt-3 p-3'>Don't have an acccount? <Link to={''}><span className='text-teal-400 ms-1 underline'>Register now</span></Link></p>
+                        <p className='font-bold mt-3 p-3'>Don't have an acccount? <Link to={'/register'}><span className='text-teal-400 ms-1 underline'>Register now</span></Link></p>
                         </form>
                     </div>
                 </div>
