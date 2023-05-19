@@ -1,8 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { useContext } from 'react';
+import { useContext} from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const NavBar = () => {
@@ -43,9 +42,9 @@ const NavBar = () => {
                         }
                         
                     </ul>
-                    <label className="btn btn-circle avatar bg-slate-700 hover:bg-slate-500 hover:border-purple-900 text-2xl" title={user? user.displayName : ""}>
+                    <label className="btn btn-circle avatar bg-slate-700 text-2xl" title={user? user.displayName : ""}>
                         {
-                            user? <img className='rounded-full' src={user.photoURL} /> : <><FontAwesomeIcon icon={faUser} /></>
+                            user? <img className='rounded-full' src={user.photoURL} /> : <FontAwesomeIcon className='rounded-full' icon="fa-solid fa-user" />
                         }
                     </label>
                 </div>

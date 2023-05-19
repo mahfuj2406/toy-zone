@@ -1,9 +1,16 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
     const {logIn, googleLogIn} = useContext(AuthContext);
+    // redirecting work 
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
+
+
     const handleLogin= event =>{
         event.preventDefault();
         const form = event.target;
@@ -14,9 +21,16 @@ const Login = () => {
         .then(result =>{
             const user = result.user;
             console.log(user);
+            navigate(from,{ replace: true})
         })
         .catch(error=>console.log(error.message))
 
+    }
+    const handleGoogleLogIn=()=>{
+        googleLogIn()
+        .then(()=>{
+        navigate(from,{ replace: true})
+        })
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -47,7 +61,7 @@ const Login = () => {
                         <p className='text-center m-2'>or</p>
                         <div className="form-control ">
                         
-                            <button className="btn bg-slate-300 text-slate-900 hover:bg-white" onClick={googleLogIn}> <img src="/public/google_icon.png" className='h-full p-2' /> Login with Google</button>
+                            <button className="btn bg-slate-300 text-slate-900 hover:bg-white" onClick={handleGoogleLogIn}> <img src="/public/google_icon.png" className='h-full p-2' /> Login with Google</button>
                         </div>
                         <p className='font-bold mt-3 p-3'>Don't have an acccount? <Link to={'/register'}><span className='text-teal-400 ms-1 underline'>Register now</span></Link></p>
                         </form>
