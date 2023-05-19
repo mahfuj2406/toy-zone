@@ -1,10 +1,21 @@
-import React from 'react';
-import { FaGoogle } from "react-icons/fa";
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
+    const {logIn, googleLogIn} = useContext(AuthContext);
     const handleLogin= event =>{
         event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        logIn(email, password)
+        .then(result =>{
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error=>console.log(error.message))
 
     }
     return (
@@ -36,7 +47,7 @@ const Login = () => {
                         <p className='text-center m-2'>or</p>
                         <div className="form-control ">
                         
-                            <button className="btn bg-slate-300 text-slate-900 hover:bg-white"> <img src="/public/google_icon.png" className='h-full p-2' /> Login with Google</button>
+                            <button className="btn bg-slate-300 text-slate-900 hover:bg-white" onClick={googleLogIn}> <img src="/public/google_icon.png" className='h-full p-2' /> Login with Google</button>
                         </div>
                         <p className='font-bold mt-3 p-3'>Don't have an acccount? <Link to={'/register'}><span className='text-teal-400 ms-1 underline'>Register now</span></Link></p>
                         </form>
