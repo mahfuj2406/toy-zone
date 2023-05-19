@@ -5,7 +5,7 @@ const Footer = () => {
         <div className="bg-teal-800">
             <footer className="container  mx-auto footer p-10 md:py-10 md:px-0 bg-teal-800 text-base-content">
                 <div>
-                    <img src="../../../../public/toyZone-2.png" alt="" height="100px" width="100px" />
+                    <img src="/toyZone-2.png" alt="" height="100px" width="100px" />
                     <p>ToyZone is the largest online toy marketplace.<br />Providing services since 1992</p>
                 </div>
                 <div>

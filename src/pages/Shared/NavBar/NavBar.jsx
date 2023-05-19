@@ -21,7 +21,7 @@ const NavBar = () => {
                         </ul>
                     </div>
                     <Link to={'/'} className="normal-case text-xl border rounded-sm p-2">
-                        <img className='w-[150px]' src="../../../../public/toyZone-2.png" alt="" />
+                        <img className='w-[150px]' src="/toyZone-2.png" alt="" />
                     </Link >
                 </div>
                 <div className="navbar-center hidden lg:flex">
