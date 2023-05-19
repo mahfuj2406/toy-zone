@@ -25,7 +25,9 @@ const AllToysRow = ({ toy }) => {
             <td className="text-center">{price}</td>
             <td className="text-center">{availableQuantity}</td>
             <th>
+                <Link to={`/toy/${_id}`}>
                 <button className="btn  btn-outline">View Details</button>
+                </Link>
             </th>
         </tr>
     );
