@@ -42,7 +42,7 @@ const NavBar = () => {
                         }
                         
                     </ul>
-                    <label className="btn btn-circle avatar bg-slate-700 text-2xl" title={user? user.displayName : ""}>
+                    <label className="btn btn-circle avatar bg-slate-700 hover:bg-slate-700 text-2xl" title={user? user.displayName : ""}>
                         {
                             user? <img className='rounded-full' src={user.photoURL} /> : <FontAwesomeIcon className='rounded-full' icon="fa-solid fa-user" />
                         }

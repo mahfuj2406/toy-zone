@@ -8,6 +8,7 @@ import AddToy from "../pages/AddToy/AddToy";
 import Blogs from "../pages/Blogs/Blogs";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -26,11 +27,11 @@ const router = createBrowserRouter([
         },
         {
           path: 'my-toys',
-          element: <MyToys></MyToys>
+          element: <PrivateRoute><MyToys></MyToys></PrivateRoute>
         },
         {
           path: 'add-a-toy',
-          element: <AddToy></AddToy>
+          element: <PrivateRoute><AddToy></AddToy></PrivateRoute>
         },
         {
           path: 'blogs',
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
         },
         {
           path: 'toy/:id',
-          element: <SingleDetails></SingleDetails>,
+          element: <PrivateRoute><SingleDetails></SingleDetails></PrivateRoute>,
           loader: ({params})=> fetch(`http://localhost:5000/toy/${params.id}`)
         }
       ]
