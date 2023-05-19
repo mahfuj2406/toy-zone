@@ -20,6 +20,7 @@ const Login = () => {
         logIn(email, password)
         .then(result =>{
             const user = result.user;
+            form.reset();
             console.log(user);
             navigate(from,{ replace: true})
         })
@@ -47,7 +48,7 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="text" name='email' placeholder="email" className="input input-bordered" />
+                            <input type="email" name='email' placeholder="email" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
