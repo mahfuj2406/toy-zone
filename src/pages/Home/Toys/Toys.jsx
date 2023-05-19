@@ -5,16 +5,33 @@ import ToysCard from "./ToysCard";
 
 
 const Toys = () => {
-    const [toys, setToys] = useState([]);
+    const [tabIndex, setTabIndex] = useState(0);
 
+    const [toys, setToys] = useState([]);
+    const [categorizedToys, setCategorizedToys] = useState([]);
 
     useEffect(() => {
         fetch('http://localhost:5000/toys')
             .then(res => res.json())
-            .then(data => setToys(data))
+            .then(data => {
+                setToys(data)
+            })
     }, [])
 
-
+    useEffect(() => {
+        if (tabIndex == 0) {
+            const newToys = toys.filter(toy => toy.subCategory === "Regular Car");
+            setCategorizedToys(newToys);
+        }
+        else if (tabIndex == 1) {
+            const newToys = toys.filter(toy => toy.subCategory === "Sports Car");
+            setCategorizedToys(newToys);
+        }
+        else if (tabIndex == 2) {
+            const newToys = toys.filter(toy => toy.subCategory === "Truck");
+            setCategorizedToys(newToys);
+        }
+    }, [tabIndex,toys])
 
     return (
         <div>
@@ -23,7 +40,7 @@ const Toys = () => {
             </div>
             <div>
                 <p>total toys number: {toys.length}</p>
-                <Tabs>
+                <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
                     <TabList>
                         <Tab>Regular Car</Tab>
                         <Tab>Sports Car</Tab>
@@ -31,17 +48,25 @@ const Toys = () => {
                     </TabList>
 
                     <TabPanel >
-                        <div  className="grid grid-cols-1 md:grid-cols-3 gap-4 py-5 px-6">
-                        {
-                            toys.map(toy=> <ToysCard key={toy._id}  toy={toy}></ToysCard>)
-                        }
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-5 px-6">
+                            {
+                                categorizedToys.map(toy => <ToysCard key={toy._id} toy={toy}></ToysCard>)
+                            }
                         </div>
                     </TabPanel>
                     <TabPanel>
-                        <h2>Sports car tab</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-5 px-6">
+                            {
+                                categorizedToys.map(toy => <ToysCard key={toy._id} toy={toy}></ToysCard>)
+                            }
+                        </div>
                     </TabPanel>
                     <TabPanel>
-                        <h2>Truck lorry tab</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-5 px-6">
+                            {
+                                categorizedToys.map(toy => <ToysCard key={toy._id} toy={toy}></ToysCard>)
+                            }
+                        </div>
                     </TabPanel>
                 </Tabs>
             </div>
