@@ -35,7 +35,7 @@ const NavBar = () => {
                 </div>
                 <div className="navbar-end">
                     <ul className="menu menu-horizontal px-1">
-                        <li><a>Login</a></li>
+                        <li><Link to={'/login'}>Login</Link></li>
                     </ul>
                     <label tabIndex={0} className="btn btn-circle avatar bg-slate-700 hover:bg-slate-500 hover:border-purple-900 text-2xl">
                         <FontAwesomeIcon icon={faUser} />
