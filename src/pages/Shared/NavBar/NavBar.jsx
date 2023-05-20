@@ -1,11 +1,11 @@
 
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useContext} from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const NavBar = () => {
-    const { user,logOut } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     return (
         <div className='bg-teal-800'>
             <div className="navbar bg-teal-800 mx-auto container">
@@ -17,8 +17,12 @@ const NavBar = () => {
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li><Link to={'/'}>Home</Link></li>
                             <li><Link to={'/all-toys'}>All Toys</Link></li>
-                            <li><Link to={'/my-toys'}>My Toys</Link></li>
-                            <li><Link to={'/add-a-toy'}>Add a Toy</Link></li>
+                            {
+                                user && <>
+                                    <li><Link to={'/my-toys'}>My Toys</Link></li>
+                                    <li><Link to={'/add-toy'}>Add a Toy</Link></li>
+                                </>
+                            }
                             <li><Link to={'/blogs'}>Blogs</Link></li>
                         </ul>
                     </div>
@@ -30,8 +34,12 @@ const NavBar = () => {
                     <ul className="menu menu-horizontal px-1">
                         <li><Link to={'/'}>Home</Link></li>
                         <li><Link to={'/all-toys'}>All Toys</Link></li>
-                        <li><Link to={'/my-toys'}>My Toys</Link></li>
-                        <li><Link to={'/add-a-toy'}>Add a Toy</Link></li>
+                        {
+                                user && <>
+                                    <li><Link to={`/my-toys/${user.email}`}>My Toys</Link></li>
+                                    <li><Link to={'/add-toy'}>Add a Toy</Link></li>
+                                </>
+                            }
                         <li><Link to={'/blogs'}>Blogs</Link></li>
                     </ul>
                 </div>
@@ -40,11 +48,11 @@ const NavBar = () => {
                         {
                             user ? <><li><a onClick={logOut}>Log out</a></li></> : <li><Link to={'/login'}>Login</Link></li>
                         }
-                        
+
                     </ul>
-                    <label className="btn btn-circle avatar bg-slate-700 hover:bg-slate-700 text-2xl" title={user? user.displayName : ""}>
+                    <label className="btn btn-circle avatar bg-slate-700 hover:bg-slate-700 text-2xl" title={user ? user.displayName : ""}>
                         {
-                            user? <img className='rounded-full' src={user.photoURL} /> : <FontAwesomeIcon className='rounded-full' icon="fa-solid fa-user" />
+                            user ? <img className='rounded-full' src={user.photoURL} /> : <FontAwesomeIcon className='rounded-full' icon="fa-solid fa-user" />
                         }
                     </label>
                 </div>
