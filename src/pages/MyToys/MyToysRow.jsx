@@ -32,14 +32,7 @@ const MyToysRow = ({toy}) => {
                 </Link>
             </th>
             <th>
-                <Link to={`/update-my-toy/${_id}`}>
-                <button className="btn  btn-outline">delete</button>
-                </Link>
-            </th>
-            <th>
-                <Link to={`/update-my-toy/${_id}`}>
-                <button className="btn  btn-outline">View Details</button>
-                </Link>
+                <button className="btn  btn-outline">X</button>
             </th>
         </tr>
     );

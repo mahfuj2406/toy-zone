@@ -2,9 +2,11 @@ import { useLoaderData } from "react-router-dom";
 import MyToysRow from "./MyToysRow";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 
 const MyToys = () => {
+    useTitle('My Toys')
     const { user } = useContext(AuthContext);
     const [toys, setToys] = useState([]);
     const url = `http://localhost:5000/my-toys?email=${user.email}`
@@ -41,7 +43,6 @@ const MyToys = () => {
                         <th className="text-center">Available Quantity</th>
                         <th className="text-center">Rating</th>
                         <th className="text-center w-[500px]">Description</th>
-                        <th className="text-center"></th>
                         <th className="text-center"></th>
                         <th className="text-center"></th>
                     </tr>

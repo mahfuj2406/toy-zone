@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const UpdateToy = () => {
     const { user } = useContext(AuthContext);
     const toy = useLoaderData();
+    useTitle(`My Toys > update`);
     return (
         <div className="container mx-auto bg-white my-10 p-5 ">
             <div className="w-full">

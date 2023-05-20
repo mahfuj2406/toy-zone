@@ -2,9 +2,13 @@
 import { useLoaderData } from "react-router-dom";
 import AllToysRow from "./AllToysRow";
 import { useEffect, useState } from "react";
+import PageHelmet from "../Shared/PageHelmet";
+import { Helmet } from "react-helmet";
+import useTitle from "../../hooks/useTitle";
 
 
 const AllToys = () => {
+    useTitle('All Toys')
     const [searchedText, setSearchedText] = useState("");
     const toyData = useLoaderData();
     const [toys, setToys] = useState(toyData);
