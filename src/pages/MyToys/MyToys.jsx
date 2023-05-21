@@ -7,10 +7,11 @@ import Swal from "sweetalert2";
 
 
 const MyToys = () => {
+    const [sortState, setSortState] = useState(1);
     useTitle('My Toys')
     const { user } = useContext(AuthContext);
     const [toys, setToys] = useState([]);
-    const url = `https://toy-zone-server-mahfuj2406.vercel.app/my-toys?email=${user.email}`
+    const url = `https://toy-zone-server-mahfuj2406.vercel.app/my-toys?email=${user.email}&sort=${sortState}`
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -53,8 +54,18 @@ const MyToys = () => {
 
     }
 
+    const sortAscending=()=>{
+        setSortState(1);
+    }
+    const sortDescending=()=>{
+        
+        setSortState(-1);
+    }
+
     return (
         <div className="overflow-x-auto container mx-auto mb-5">
+            <button onClick={sortAscending} className="btn  btn-outline">Sort ascending</button>
+            <button onClick={sortDescending} className="btn  btn-outline">Sort descending</button>
             <table className="table w-full my-5">
                 <thead className="bg-white">
                     <tr className="bg-white">
