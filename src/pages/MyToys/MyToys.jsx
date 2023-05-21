@@ -3,6 +3,7 @@ import MyToysRow from "./MyToysRow";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import useTitle from "../../hooks/useTitle";
+import Swal from "sweetalert2";
 
 
 const MyToys = () => {
@@ -16,20 +17,40 @@ const MyToys = () => {
             .then(data => setToys(data))
     }, [user]);
 
-// delete function to delete specific row 
-    const handleDelete= id=>{
-        fetch(`https://toy-zone-server-mahfuj2406.vercel.app/my-toys/${id}`,{
-            method: 'DELETE'
-        })
-        .then(res=>res.json())
-        .then(data =>{
-            console.log(data);
-            if(data.deletedCount > 0){ 
-                alert('Deleted successfully!');
-                const remainingToys = toys.filter( toy => toy._id !== id );
-                setToys(remainingToys);
+    // delete function to delete specific row 
+    const handleDelete = id => {
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://toy-zone-server-mahfuj2406.vercel.app/my-toys/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            const remainingToys = toys.filter(toy => toy._id !== id);
+                            setToys(remainingToys);
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+                
             }
         })
+
+
     }
 
     return (
@@ -56,9 +77,9 @@ const MyToys = () => {
                 <tbody className="text-white">
                     {
                         toys.map(toy => <MyToysRow
-                            key={toy._id} 
+                            key={toy._id}
                             toy={toy}
-                            handleDelete = { handleDelete}
+                            handleDelete={handleDelete}
                         ></MyToysRow>)
                     }
                 </tbody>
