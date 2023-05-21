@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
+    const navigate = useNavigate();
+    const [error, setError] = useState("");
     useTitle('Register')
-    const {createUser} = useContext(AuthContext);
+    const { createUser, profileUpdate } = useContext(AuthContext);
 
     const handleRegister = event => {
         event.preventDefault();
@@ -13,15 +15,26 @@ const Register = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
+        const photoUrl = form.photoUrl.value;
         console.log(name, email, password);
 
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log('created user', user)
+                console.log('created user', user);
+                profileUpdate(name, photoUrl)
+                    .then(res => {
+                        navigate('/login');
+                    })
+                    .catch(error => {
+                        console.log(error.message);
+                        setError(error.message);
+                    })
+
+                form.reset();
             })
             .catch(error => console.log(error))
-        
+
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -38,7 +51,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input type="text" name='text' placeholder="enter your name" className="input input-bordered" />
+                                <input type="text" name='name' placeholder="enter your name" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">

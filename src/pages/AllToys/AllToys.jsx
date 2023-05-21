@@ -12,6 +12,9 @@ const AllToys = () => {
     const [searchedText, setSearchedText] = useState("");
     const toyData = useLoaderData();
     const [toys, setToys] = useState(toyData);
+    
+    const limit = 20;
+    let index = 1;
 
     const search = (event) => {
         const matchedName = toyData.filter((name) => {
@@ -38,9 +41,7 @@ const AllToys = () => {
                 <thead className="bg-white">
                     <tr className="bg-white">
                         <th className="text-center">
-                            <label>
-                                <input type="checkbox" className="checkbox" />
-                            </label>
+                            
                         </th>
                         <th className="">Seller Name</th>
                         <th className="text-center">Toy Name</th>
@@ -52,8 +53,10 @@ const AllToys = () => {
                 </thead>
                 <tbody className="text-white">
                     {
-                        toys.map(toy => <AllToysRow
-                            key={toy._id} toy={toy}
+                        toys.slice(0, limit).map(toy => <AllToysRow
+                            key={toy._id} 
+                            toy={toy}
+                            index={index++}
                         ></AllToysRow>)
                     }
                 </tbody>

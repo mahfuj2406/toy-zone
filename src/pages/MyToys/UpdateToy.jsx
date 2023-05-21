@@ -1,42 +1,86 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
 
 const UpdateToy = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log("Location : ",location)
     const { user } = useContext(AuthContext);
     const toy = useLoaderData();
+    const id = toy._id;
     useTitle(`My Toys > update`);
+
+    const handleUpdate = event =>{
+        event.preventDefault();
+        const form = event.target;
+        const price = form.price.value;
+        const availableQuantity = form.quantity.value;
+        const description = form.description.value;
+
+        const updatedToy = {
+            price,
+            availableQuantity,
+            description
+        }
+        console.log("updated for ",id," : ",updatedToy);
+        
+
+        fetch(`http://localhost:5000/update-my-toy/${id}`,{
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updatedToy)
+        })
+        .then(res =>res.json())
+        .then(data => {
+            console.log(data);
+            if (data.modifiedCount > 0) {
+                alert('updated successfully!');
+                navigate('/my-toys');
+                // update state
+                // const remaining = bookings.filter(booking => booking._id !== id);
+                // const updated = bookings.find(booking => booking._id === id);
+                // updated.status = 'confirm'
+                // const newBookings = [updated, ...remaining];
+                // setBookings(newBookings);
+            }
+        })
+    }
+
+
     return (
         <div className="container mx-auto bg-white my-10 p-5 ">
             <div className="w-full">
                 <div className="text-center w-full md:w-1/2 mx-auto">
                     <h1 className="text-3xl font-bold p-3 border border-teal-900 rounded">Update Your Toy : <span className='text-teal-800'>{toy.toyName}</span> </h1>
                 </div>
-                <form  className="w-full max-w-lg card shadow-2xl p-5 bg-white mx-auto my-5">
+                <form onSubmit={handleUpdate}  className="w-full max-w-lg card shadow-2xl p-5 bg-white mx-auto my-5">
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label className="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="seller-name">Seller Name</label>
-                            <input className="block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 focus:outline-none focus:border-gray-500" name="sellerName" defaultValue={toy.sellerName} id="seller-name" type="text" placeholder="Enter seller name" />
+                            <input className="block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 focus:outline-none focus:border-gray-500" disabled name="sellerName" defaultValue={toy.sellerName} id="seller-name" type="text" placeholder="Enter seller name" />
                         </div>
                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label className="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="toy-name">
                                 Toy Name
                             </label>
-                            <input className="block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 focus:outline-none focus:border-gray-500" defaultValue={toy.toyName} name="toyName" id="toy-name" type="text" placeholder="Enter toy name" />
+                            <input className="block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 focus:outline-none focus:border-gray-500" defaultValue={toy.toyName} disabled name="toyName" id="toy-name" type="text" placeholder="Enter toy name" />
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full px-3">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="email">Email Address</label>
-                            <input className="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 focus:outline-none focus:border-gray-500" name="email" defaultValue={toy.sellerEmail} id="email" type="email" />
+                            <input className="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 focus:outline-none focus:border-gray-500" name="email" disabled defaultValue={toy.sellerEmail} id="email" type="email" />
                             {/* <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> */}
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full px-3">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="photo-URL">Toy photo URL</label>
-                            <input className="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 focus:outline-none focus:border-gray-500" name="photoURL" defaultValue={toy.imageURL} id="photo-URL" type="text" />
+                            <input className="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 focus:outline-none focus:border-gray-500" name="photoURL" disabled defaultValue={toy.imageURL} id="photo-URL" type="text" />
                             {/* <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> */}
                         </div>
                     </div>
@@ -44,7 +88,7 @@ const UpdateToy = () => {
                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label className="block uppercase text-gray-700 text-xs font-bold mb-2">Sub-category</label>
                             <div className="relative">
-                                <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required defaultValue={toy.subCategory} name="selectInput">
+                                <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" disabled defaultValue={toy.subCategory} name="selectInput">
                                     <option disabled hidden>select</option>
                                     <option>Regular Car</option>
                                     <option>Sports Car</option>
@@ -69,7 +113,7 @@ const UpdateToy = () => {
                         </div>
                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label className="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="rating">Ratings</label>
-                            <input className="block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 focus:outline-none focus:border-gray-500" name="rating" defaultValue={toy.rating} id="rating" type="text" />
+                            <input className="block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 focus:outline-none focus:border-gray-500" name="rating" defaultValue={toy.rating} disabled id="rating" type="text" />
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-6">

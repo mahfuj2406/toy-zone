@@ -1,9 +1,10 @@
 
 import { Link } from 'react-router-dom';
 
-const MyToysRow = ({toy}) => {
+const MyToysRow = ({toy, handleDelete}) => {
     const { _id, toyName, price, sellerName, availableQuantity, subCategory, rating, description } = toy;
     console.log(toy);
+
     return (
         <tr className='h-[70px]'>
             <th className="text-center">
@@ -32,7 +33,7 @@ const MyToysRow = ({toy}) => {
                 </Link>
             </th>
             <th>
-                <button className="btn  btn-outline">X</button>
+                <button onClick={()=>handleDelete(_id)} className="btn  btn-outline">X</button>
             </th>
         </tr>
     );

@@ -1,20 +1,18 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 
-const AllToysRow = ({ toy }) => {
+const AllToysRow = ({ toy,index }) => {
     const { _id, toyName, price, sellerName, availableQuantity, subCategory } = toy;
     console.log(toy)
     return (
         <tr className=''>
             <th className="text-center">
-                <label>
-                    <input type="checkbox" className="checkbox" />
-                </label>
+                {index}
             </th>
             <td className="">
                 <div className="text-start">
                     <div>
-                        <div className="font-bold">{sellerName}</div>
+                        <div className="font-bold">{sellerName? sellerName : <></>}</div>
                     </div>
                 </div>
             </td>

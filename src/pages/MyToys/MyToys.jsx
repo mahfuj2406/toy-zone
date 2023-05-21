@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+
 import MyToysRow from "./MyToysRow";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -14,20 +14,26 @@ const MyToys = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setToys(data))
-    }, [])
+    }, [user]);
+
+// delete function to delete specific row 
+    const handleDelete= id=>{
+        fetch(`http://localhost:5000/my-toys/${id}`,{
+            method: 'DELETE'
+        })
+        .then(res=>res.json())
+        .then(data =>{
+            console.log(data);
+            if(data.deletedCount > 0){ 
+                alert('Deleted successfully!');
+                const remainingToys = toys.filter( toy => toy._id !== id );
+                setToys(remainingToys);
+            }
+        })
+    }
+
     return (
         <div className="overflow-x-auto container mx-auto mb-5">
-            <form>
-                {/* <div className="form-control w-1/2 mx-auto">
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        className="input input-bordered border-slate-500 bg-white my-5 text-black"
-                        value={searchedText}
-                        onChange={search} />
-
-                </div> */}
-            </form>
             <table className="table w-full my-5">
                 <thead className="bg-white">
                     <tr className="bg-white">
@@ -50,7 +56,9 @@ const MyToys = () => {
                 <tbody className="text-white">
                     {
                         toys.map(toy => <MyToysRow
-                            key={toy._id} toy={toy}
+                            key={toy._id} 
+                            toy={toy}
+                            handleDelete = { handleDelete}
                         ></MyToysRow>)
                     }
                 </tbody>

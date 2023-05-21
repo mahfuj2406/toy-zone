@@ -38,8 +38,7 @@ const Toys = () => {
             <div className="text-center py-5 my-4">
                 <h2 className="text-4xl text-teal-500 font-bold ">Toys</h2>
             </div>
-            <div>
-                <p>total toys number: {toys.length}</p>
+            <div className="text-center">
                 <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
                     <TabList>
                         <Tab>Regular Car</Tab>
@@ -48,21 +47,21 @@ const Toys = () => {
                     </TabList>
 
                     <TabPanel >
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-5 px-6">
+                        <div className=" text-start grid grid-cols-1 md:grid-cols-3 gap-4 py-5 px-6">
                             {
                                 categorizedToys.map(toy => <ToysCard key={toy._id} toy={toy}></ToysCard>)
                             }
                         </div>
                     </TabPanel>
                     <TabPanel>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-5 px-6">
+                        <div className="text-start grid grid-cols-1 md:grid-cols-3 gap-4 py-5 px-6">
                             {
                                 categorizedToys.map(toy => <ToysCard key={toy._id} toy={toy}></ToysCard>)
                             }
                         </div>
                     </TabPanel>
                     <TabPanel>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-5 px-6">
+                        <div className="text-start grid grid-cols-1 md:grid-cols-3 gap-4 py-5 px-6">
                             {
                                 categorizedToys.map(toy => <ToysCard key={toy._id} toy={toy}></ToysCard>)
                             }
