@@ -6,4 +6,4 @@
 * user can create update and delete toy
 * beautiful theme color maintained
 
-client-side live link: 
+client-side live link: https://toyzone-a1528.web.app/

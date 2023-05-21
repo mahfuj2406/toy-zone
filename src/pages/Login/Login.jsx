@@ -76,7 +76,7 @@ const Login = () => {
                         <p className='text-center m-2'>or</p>
                         <div className="form-control ">
                         
-                            <button className="btn bg-slate-300 text-slate-900 hover:bg-white" onClick={handleGoogleLogIn}> <img src="/public/google_icon.png" className='h-full p-2' /> Login with Google</button>
+                            <button className="btn bg-slate-300 text-slate-900 hover:bg-white" onClick={handleGoogleLogIn}> <img src="https://i.ibb.co/FK4xtWJ/google-icon.png" className='h-full p-2' /> Login with Google</button>
                         </div>
                         <p className='font-bold mt-3 p-3'>Don't have an acccount? <Link to={'/register'}><span className='text-teal-400 ms-1 underline'>Register now</span></Link></p>
                         
