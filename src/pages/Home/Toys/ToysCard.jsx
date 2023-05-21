@@ -8,7 +8,6 @@ const ToysCard = ({ toy }) => {
             <figure><img className='max-w-xs' src={imageURL} alt="car!" /></figure>
             <div className="card-body">
                 <h2 className="card-title font-bold text-slate-800 text-3xl">{toyName}</h2>
-                <p className='text-slate-600'>category: {subCategory}</p>
                 <p className="font-bold text-slate-600">Price : {price}$ </p>
                 <p className=""><StarIcon className="h-6 w-6 text-yellow-500 inline me-2" />{rating} </p>
                 <div className="w-full">

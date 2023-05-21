@@ -6,7 +6,7 @@ import useTitle from '../../hooks/useTitle';
 const Register = () => {
     const navigate = useNavigate();
     const [error, setError] = useState("");
-    useTitle('Register')
+    useTitle('Register');
     const { createUser, profileUpdate } = useContext(AuthContext);
 
     const handleRegister = event => {
@@ -33,7 +33,10 @@ const Register = () => {
 
                 form.reset();
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                console.log(error);
+                setError(error.message);
+            })
 
     }
     return (
@@ -57,13 +60,13 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" name='email' placeholder="enter your email" className="input input-bordered" />
+                                <input type="email" name='email' placeholder="enter your email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="text" name='password' placeholder="password" className="input input-bordered" />
+                                <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -74,6 +77,7 @@ const Register = () => {
                             <div className="form-control mt-6 ">
                                 <button className="btn bg-teal-800 border-0 hover:border hover:bg-teal-900">Register</button>
                             </div>
+                            <p className='text-red-400'>{error} </p>
                             <p className='font-bold mt-3 p-3'>Already member? <Link to={'/login'}><span className='text-teal-400 ms-1 underline'>Login now</span></Link></p>
                         </form>
                     </div>
