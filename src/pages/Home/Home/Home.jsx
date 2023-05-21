@@ -1,9 +1,10 @@
 import useTitle from "../../../hooks/useTitle";
 import Toys from "../Toys/Toys";
 import Banner from "./Banner";
+import CustomerRiview from "./CustomerRiview";
 import Favourite from "./Favourite";
 import Gallery from "./Gallery";
-import Testimonials from "./Testimonials";
+import NewsLetter from "./NewsLetter";
 
 
 const Home = () => {
@@ -11,10 +12,12 @@ const Home = () => {
     return (
         <div className="container mx-auto">
             <Banner></Banner>
+            {/* <Testimonials></Testimonials> */}
             <Gallery></Gallery>
             <Toys></Toys>
-            {/* <Testimonials></Testimonials> */}
             <Favourite></Favourite>
+            <CustomerRiview></CustomerRiview>
+            <NewsLetter></NewsLetter>
         </div>
     );
 };

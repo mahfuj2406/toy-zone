@@ -13,7 +13,7 @@ const Gallery = () => {
             <h1 className='font-bold text-3xl mb-5 text-slate-800 text-center'>Gallery</h1>
             <div className="-m-1 grid grid-cols-2 md:grid-cols-3 md:flex-wrap gap-3 md:-m-2 pb-10">
 
-                <div className="border rounded-lg" data-aos="fade-right">
+                <div className="border rounded-lg" data-aos="fade-down-right">
                     <div className="w-full p-1 md:p-2">
                         <img
                             alt="gallery"
@@ -29,7 +29,7 @@ const Gallery = () => {
                             src="https://m.media-amazon.com/images/I/7196CirAm+L._SX679_.jpg" />
                     </div>
                 </div>
-                <div className="border rounded-lg" data-aos="fade-left">
+                <div className="border rounded-lg" data-aos="fade-down-left">
                     <div className="w-full p-1 md:p-2">
                         <img
                             alt="gallery"
@@ -37,7 +37,7 @@ const Gallery = () => {
                             src="https://cdn.shopify.com/s/files/1/0149/8336/4708/products/170216_CarCarrier_Left2-Square_1024x1024@2x.jpg?v=1679957914" />
                     </div>
                 </div>
-                <div className="border rounded-lg" data-aos="fade-right">
+                <div className="border rounded-lg" data-aos="fade-up-right">
                     <div className="w-full p-1 md:p-2">
                         <img
                             alt="gallery"
@@ -53,7 +53,7 @@ const Gallery = () => {
                             src="https://cdn.shopify.com/s/files/1/0539/4402/5275/products/661051-Mini-Light-Blue-Truck.jpg?v=1654528475" />
                     </div>
                 </div>
-                <div className="border rounded-lg " data-aos="fade-left">
+                <div className="border rounded-lg " data-aos="fade-up-left">
                     <div className="w-full p-1 md:p-2">
                         <img
                             alt="gallery"
