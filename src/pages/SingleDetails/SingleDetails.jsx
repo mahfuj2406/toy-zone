@@ -10,9 +10,9 @@ const SingleDetails = () => {
 
     return (
         <div className="container mx-auto">
-            <div className="hero border m-3 rounded">
+            <div className="hero border m-3 rounded md:p-10">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    <img src={imageURL} className="w-[auto] rounded-lg shadow-2xl" />
+                    <img src={imageURL} className="w-[auto] rounded-lg shadow-2xl max-w-lg md:ms-5" />
                     <div className="text-slate-800">
                         <h1 className="text-5xl font-bold">{toyName}</h1>
                         <p className="py-6 ">{description}</p>

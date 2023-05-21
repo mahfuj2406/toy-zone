@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         {
           path: 'all-toys',
           element: <AllToys></AllToys>,
-          loader:()=>fetch('http://localhost:5000/toys')
+          loader:()=>fetch('https://toy-zone-server-mahfuj2406.vercel.app/toys')
         },
         {
           path: 'my-toys',
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
         {
           path: 'update-my-toy/:id',
           element: <PrivateRoute><UpdateToy></UpdateToy></PrivateRoute>,
-          loader: ({params})=> fetch(`http://localhost:5000/update-my-toy/${params.id}`)
+          loader: ({params})=> fetch(`https://toy-zone-server-mahfuj2406.vercel.app/update-my-toy/${params.id}`)
         },
         {
           path: 'blogs',
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
         {
           path: 'toy/:id',
           element: <PrivateRoute><SingleDetails></SingleDetails></PrivateRoute>,
-          loader: ({params})=> fetch(`http://localhost:5000/toy/${params.id}`)
+          loader: ({params})=> fetch(`https://toy-zone-server-mahfuj2406.vercel.app/toy/${params.id}`)
         }
       ]
     },

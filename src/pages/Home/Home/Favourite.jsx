@@ -6,7 +6,7 @@ const Favourite = () => {
     const [favouriteToys, setFavouriteToys] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/toys')
+        fetch('https://toy-zone-server-mahfuj2406.vercel.app/toys')
             .then(res => res.json())
             .then(data => {
                 console.log(data);

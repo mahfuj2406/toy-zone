@@ -11,7 +11,7 @@ const Toys = () => {
     const [categorizedToys, setCategorizedToys] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/toys')
+        fetch('https://toy-zone-server-mahfuj2406.vercel.app/toys')
             .then(res => res.json())
             .then(data => {
                 setToys(data)

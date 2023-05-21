@@ -27,7 +27,7 @@ const UpdateToy = () => {
         console.log("updated for ",id," : ",updatedToy);
         
 
-        fetch(`http://localhost:5000/update-my-toy/${id}`,{
+        fetch(`https://toy-zone-server-mahfuj2406.vercel.app/update-my-toy/${id}`,{
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
