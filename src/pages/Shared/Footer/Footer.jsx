@@ -31,7 +31,7 @@ const Footer = () => {
 
             </footer>
             <div className="bg-teal-900 h-[50px] flex items-center justify-center">
-                <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+                <p className="text-center">Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
             </div>
         </div>
     );

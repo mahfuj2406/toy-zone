@@ -6,34 +6,31 @@ const MyToysRow = ({toy, handleDelete}) => {
     console.log(toy);
 
     return (
-        <tr className='h-[70px]'>
-            <th className="text-center">
-                <label>
-                    <input type="checkbox" className="checkbox" />
-                </label>
+        <tr className='h-[70px] bg-white'>
+            <th className="text-center bg-white">
             </th>
-            <td className="">
+            <td className=" bg-white text-black">
                 <div className="text-start">
                     <div>
                         <div className="font-bold">{sellerName}</div>
                     </div>
                 </div>
             </td>
-            <td className="text-center">
+            <td className="text-center bg-white text-black">
                 {toyName}
             </td>
-            <td className="text-center">{subCategory}</td>
-            <td className="text-center">{price}</td>
-            <td className="text-center">{availableQuantity}</td>
-            <td className="text-center">{rating}</td>
-            <td className="text-center"><p className='overflow-hidden whitespace-nowrap text-ellipsis max-w-sm text-xs'>{description}</p></td>
-            <th>
+            <td className="text-center bg-white text-black">{subCategory}</td>
+            <td className="text-center bg-white text-black">{price}</td>
+            <td className="text-center bg-white text-black">{availableQuantity}</td>
+            <td className="text-center bg-white text-black">{rating}</td>
+            <td className="text-center bg-white text-black"><p className='overflow-hidden whitespace-nowrap text-ellipsis max-w-sm text-xs'>{description}</p></td>
+            <th className='bg-white '>
                 <Link to={`/update-my-toy/${_id}`}>
-                <button className="btn  btn-outline">update</button>
+                <button className="btn  btn-outline bg-teal-700 text-white">update</button>
                 </Link>
             </th>
-            <th>
-                <button onClick={()=>handleDelete(_id)} className="btn  btn-outline">X</button>
+            <th className='bg-white '>
+                <button onClick={()=>handleDelete(_id)} className="btn  btn-outline bg-teal-700 text-white">X</button>
             </th>
         </tr>
     );

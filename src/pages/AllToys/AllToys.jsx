@@ -25,7 +25,7 @@ const AllToys = () => {
     };
     return (
         <div className="overflow-x-auto container mx-auto mb-5">
-            <form>
+            <form className="text-black">
                 <div className="form-control w-1/2 mx-auto">
                     <input
                         type="text"
@@ -38,16 +38,16 @@ const AllToys = () => {
             </form>
             <table className="table w-full">
                 <thead className="bg-white">
-                    <tr className="bg-white">
-                        <th className="text-center">
+                    <tr className="bg-white border">
+                        <th className="text-center text-black bg-white">
                             
                         </th>
-                        <th className="">Seller Name</th>
-                        <th className="text-center">Toy Name</th>
-                        <th className="text-center">Sub-category</th>
-                        <th className="text-center">Price</th>
-                        <th className="text-center">Available Quantity</th>
-                        <th className="text-center"></th>
+                        <th className="text-black bg-white">Seller Name</th>
+                        <th className="text-center text-black bg-white">Toy Name</th>
+                        <th className="text-center text-black bg-white">Sub-category</th>
+                        <th className="text-center text-black bg-white">Price</th>
+                        <th className="text-center text-black bg-white">Available Quantity</th>
+                        <th className="text-center text-black bg-white"></th>
                     </tr>
                 </thead>
                 <tbody className="text-white">

@@ -16,7 +16,7 @@ const MyToys = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setToys(data))
-    }, [user]);
+    }, [user,sortState]);
 
     // delete function to delete specific row 
     const handleDelete = id => {
@@ -68,21 +68,18 @@ const MyToys = () => {
             <button onClick={sortDescending} className="btn  btn-outline">Sort descending</button>
             <table className="table w-full my-5">
                 <thead className="bg-white">
-                    <tr className="bg-white">
-                        <th className="text-center">
-                            <label>
-                                <input type="checkbox" className="checkbox" />
-                            </label>
+                    <tr className="bg-white text-black border">
+                        <th className="text-center bg-white">
                         </th>
-                        <th className="">Seller Name</th>
-                        <th className="text-center">Toy Name</th>
-                        <th className="text-center">Sub-category</th>
-                        <th className="text-center">Price</th>
-                        <th className="text-center">Available Quantity</th>
-                        <th className="text-center">Rating</th>
-                        <th className="text-center w-[500px]">Description</th>
-                        <th className="text-center"></th>
-                        <th className="text-center"></th>
+                        <th className=" bg-white text-black ">Seller Name</th>
+                        <th className="text-center bg-white text-black ">Toy Name</th>
+                        <th className="text-center bg-white text-black ">Sub-category</th>
+                        <th className="text-center bg-white text-black ">Price</th>
+                        <th className="text-center bg-white text-black ">Available Quantity</th>
+                        <th className="text-center bg-white text-black ">Rating</th>
+                        <th className="text-center bg-white text-black  w-[500px]">Description</th>
+                        <th className="text-center bg-white text-black "></th>
+                        <th className="text-center bg-white text-black "></th>
                     </tr>
                 </thead>
                 <tbody className="text-white">

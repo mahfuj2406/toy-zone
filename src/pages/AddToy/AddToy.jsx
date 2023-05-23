@@ -2,9 +2,11 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import useTitle from "../../hooks/useTitle";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const AddToy = () => {
+    const navigate =useNavigate();
     useTitle('Add Toy')
     const { user } = useContext(AuthContext);
     const handleAddToy = event => {
@@ -51,6 +53,7 @@ const AddToy = () => {
                     showConfirmButton: false,
                     timer: 1500
                   })
+                  navigate('/my-toys');
             }else{
                 Swal.fire({
                     position: 'top-end',

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
+import Swal from "sweetalert2";
 
 const UpdateToy = () => {
     const location = useLocation();
@@ -38,7 +39,8 @@ const UpdateToy = () => {
         .then(data => {
             console.log(data);
             if (data.modifiedCount > 0) {
-                alert('updated successfully!');
+                Swal.fire('Updated Successfully!')
+            
                 navigate('/my-toys');
             }
         })
